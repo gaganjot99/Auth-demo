@@ -1,20 +1,51 @@
+import { useEffect, useState } from "react";
+
 const Login = ({ setStatus }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    if (
+      document.getElementById("email").checkValidity() &&
+      document.getElementById("password").value.length > 8
+    ) {
+      document.getElementsByClassName("auth-btn")[0].disabled = false;
+    } else {
+      document.getElementsByClassName("auth-btn")[0].disabled = true;
+    }
+  }, [email, password]);
+
   return (
     <div>
-      <form>
+      <form className="main-form">
         <h2>Log in</h2>
-        <label for="email">E-mail</label>
-        <input id="email" type="email" placeholder="Enter your email"></input>
-        <label for="password">Password</label>
+        <label htmlFor="email">E-mail</label>
+        <input
+          id="email"
+          type="email"
+          placeholder="Enter your email"
+          value={email}
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+        ></input>
+        <label htmlFor="password">Password</label>
         <input
           id="password"
           type="password"
           placeholder="Enter your password"
+          minLength={8}
+          value={password}
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
         ></input>
-        <button type="submit">Log in</button>
+        <button className="auth-btn" type="submit" disabled>
+          Log in
+        </button>
       </form>
-      <p>
-        Don't have an account?
+      <p className="toggle-p">
+        Don't have an account?&nbsp;
         <a
           href="#signup"
           onClick={(e) => {

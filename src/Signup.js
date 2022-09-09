@@ -1,32 +1,34 @@
 const Signup = ({ setStatus }) => {
   return (
     <div>
-      <form>
+      <form className="main-form">
         <h2>Sign up</h2>
-        <label for="email">E-mail</label>
+        <label htmlFor="email">E-mail</label>
         <input id="email" type="email" placeholder="Enter your email"></input>
-        <label for="username">Username</label>
+        <label htmlFor="username">Username</label>
         <input
           id="username"
           type="text"
           placeholder="Enter your new username"
         ></input>
-        <label for="password">Password</label>
+        <label htmlFor="password">Password</label>
         <input
           id="password"
           type="password"
           placeholder="Enter new password"
         ></input>
-        <label for="confirm-password">Confirm Password</label>
+        <label htmlFor="confirm-password">Confirm Password</label>
         <input
           id="confirm-password"
           type="password"
           placeholder="Enter new password again"
         ></input>
-        <button type="submit">Create Account</button>
+        <button className="auth-btn" type="submit">
+          Create Account
+        </button>
       </form>
-      <p>
-        Already have an account?
+      <p className="toggle-p">
+        Already have an account?&nbsp;
         <a
           href="#signup"
           onClick={(e) => {
