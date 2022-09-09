@@ -1,0 +1,25 @@
+{
+  "name": "auth-demo",
+  "version": "1.0.0",
+  "description": "authentication and authorisation demo on a app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gaganjot99/Auth-demo.git"
+  },
+  "keywords": [
+    "authentication",
+    "authorisation",
+    "demo",
+    "web-app"
+  ],
+  "author": "gagan",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/gaganjot99/Auth-demo/issues"
+  },
+  "homepage": "https://github.com/gaganjot99/Auth-demo#readme"
+}
