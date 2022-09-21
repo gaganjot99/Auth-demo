@@ -17,11 +17,12 @@ const Login = ({ setStatus }) => {
 
   return (
     <div>
-      <form className="main-form">
+      <form className="main-form" action="/login/password" method="post">
         <h2>Log in</h2>
         <label htmlFor="email">E-mail</label>
         <input
           id="email"
+          name="username"
           type="email"
           placeholder="Enter your email"
           value={email}
@@ -32,6 +33,7 @@ const Login = ({ setStatus }) => {
         <label htmlFor="password">Password</label>
         <input
           id="password"
+          name="password"
           type="password"
           placeholder="Enter your password"
           minLength={8}

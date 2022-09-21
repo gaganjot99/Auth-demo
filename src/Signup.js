@@ -81,8 +81,10 @@ const Signup = ({ setStatus }) => {
         className="main-form"
         onSubmit={(e) => {
           e.preventDefault();
-          submitForm();
+          e.target.submit();
         }}
+        method="post"
+        action="/signup"
       >
         <h2>Sign up</h2>
         <label htmlFor="email">E-mail</label>
@@ -90,6 +92,7 @@ const Signup = ({ setStatus }) => {
           id="email"
           type="email"
           placeholder="Enter your email"
+          name="username"
           value={email}
           onChange={(e) => {
             setEmail(e.target.value);
@@ -110,6 +113,7 @@ const Signup = ({ setStatus }) => {
           <input
             id="password"
             type="password"
+            name="password"
             placeholder="Enter new password"
             value={password}
             onChange={(e) => {
