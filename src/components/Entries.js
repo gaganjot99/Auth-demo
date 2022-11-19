@@ -1,8 +1,9 @@
+import Listheader from "./Entries/Listheader";
+
 const Entries = (props) => {
   return (
     <div id="main-entries">
-      <div>Above</div>
-      <div>Below</div>
+      <Listheader />
     </div>
   );
 };

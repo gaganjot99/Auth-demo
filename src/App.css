@@ -1,5 +1,5 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
-
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
 :root {
   --brown: #743a39;
   --yellow: #f9b56f;
@@ -36,6 +36,7 @@ a:hover {
   top: 0;
   left: 0;
   width: 100%;
+  font-family: "Open Sans", sans-serif;
 }
 
 #main-body {
@@ -90,6 +91,10 @@ button {
 .noborder {
   border: none;
   background-color: inherit;
+}
+
+.left-spc {
+  margin-left: 10px;
 }
 
 .medium-text {
@@ -196,4 +201,79 @@ button {
 #right-half.left-move {
   left: -200px;
   transition-duration: 1s;
+}
+
+#date-menu {
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12),
+    0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  margin: 0 22px;
+  border-radius: 5px;
+  padding: 10px;
+  position: absolute;
+  z-index: 15;
+  background-color: var(--white);
+  left: 0;
+  top: 65px;
+}
+
+#select-year {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--black);
+  font-weight: normal;
+  border-bottom: 1px solid var(--lightgray);
+  padding-bottom: 10px;
+}
+
+.selected-year {
+  border: 2px solid var(--lightgray);
+  padding: 0 8px;
+  margin: 0 10px;
+}
+
+.not-selected {
+  opacity: 0.5;
+  font-weight: normal;
+  font-size: 1rem;
+}
+
+#month-art {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 5px;
+  margin-top: 15px;
+}
+
+.month-btn {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid var(--white);
+  cursor: pointer;
+}
+
+.month-btn:hover {
+  border: 1px solid var(--black);
+}
+
+#date-div {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  width: 300px;
+}
+
+.nrm-btn {
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: "Open Sans", sans-serif;
+}
+
+.single-btn {
+  padding: 3px 5px;
+  font-size: 1rem;
+  border-radius: 0;
+  border: 1px solid var(--lightgray);
 }
