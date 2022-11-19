@@ -3,11 +3,12 @@
 :root {
   --brown: #743a39;
   --yellow: #f9b56f;
-  --blue: #2559a8;
+  --blue: #3277df;
   --green: #076d39;
   --white: #e0e0e2;
   --black: #2b252c;
   --red: rgb(209, 17, 17);
+  --lightgray: #c1c0c0;
 }
 
 * {
@@ -31,22 +32,15 @@ a:hover {
   min-height: 100vh;
   background: url("../public/bg.jpg");
   background-size: cover;
-}
-
-.App-header {
-  color: var(--white);
-  height: 75px;
-  font-size: 1.5rem;
-  text-align: center;
-}
-
-#main-logo {
-  padding-top: 8px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
 #main-body {
   background: var(--white);
-  margin: 50px auto;
+  margin: 100px auto;
   width: 400px;
   padding: 20px 30px;
   border-radius: 15px;
@@ -71,6 +65,7 @@ label {
   color: var(--blue);
   margin-top: 30px;
   font-size: 1rem;
+  position: relative;
 }
 
 input {
@@ -90,6 +85,19 @@ button {
   padding: 5px;
   cursor: pointer;
   transition-duration: 300ms;
+}
+
+.noborder {
+  border: none;
+  background-color: inherit;
+}
+
+.medium-text {
+  font-size: 2rem;
+}
+
+.full-width {
+  width: 100%;
 }
 
 .auth-btn {
@@ -138,4 +146,54 @@ button {
   font-weight: 700;
   position: absolute;
   visibility: hidden;
+}
+
+.username-warn {
+  background-color: white;
+  position: absolute;
+  top: -10px;
+  right: 25px;
+  font-size: 0.8rem;
+  padding: 4px 15px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+#main-app {
+  display: flex;
+  flex-flow: row nowrap;
+  transition-duration: 2s;
+}
+
+#side-nav {
+  position: fixed;
+  width: 100px;
+  left: 0;
+  background-color: var(--white);
+  padding-top: 15px;
+  height: 100vh;
+  border-right: 1px solid var(--lightgray);
+  height: 100vh;
+  z-index: 10;
+}
+
+#right-half {
+  display: grid;
+  position: absolute;
+  right: 0;
+  left: 100px;
+  grid-template-columns: 300px 1fr;
+  transition-duration: 1s;
+}
+
+#main-workspace,
+#main-entries {
+  background-color: var(--white);
+  border-right: 1px solid var(--lightgray);
+  height: 100vh;
+}
+
+#right-half.left-move {
+  left: -200px;
+  transition-duration: 1s;
 }

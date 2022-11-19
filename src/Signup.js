@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const Signup = ({ setStatus }) => {
+const Signup = ({ navigate }) => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -26,13 +26,56 @@ const Signup = ({ setStatus }) => {
   };
 
   useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      userCheck();
+    }, 1500);
+    return () => clearTimeout(timeoutId);
+  }, [username]);
+
+  const userCheck = () => {
+    if (username.length === 0) {
+      document.getElementsByClassName("username-warn")[0].style.visibility =
+        "hidden";
+      return;
+    }
+    if (username.length < 5) {
+      document.getElementsByClassName("username-warn")[0].innerText =
+        "Username should be atleast 5 characters long";
+      document.getElementsByClassName("username-warn")[0].style.visibility =
+        "visible";
+      document.getElementsByClassName("username-warn")[0].style.color =
+        "var(--red)";
+      return;
+    }
+    fetch("/verifyname/" + username)
+      .then((data) => data.json())
+      .then((data) => {
+        if (!data.username) {
+          document.getElementsByClassName("username-warn")[0].innerText =
+            username + " is valid";
+          document.getElementsByClassName("username-warn")[0].style.visibility =
+            "visible";
+          document.getElementsByClassName("username-warn")[0].style.color =
+            "var(--green)";
+        } else {
+          document.getElementsByClassName("username-warn")[0].innerText =
+            username + " is already in use";
+          document.getElementsByClassName("username-warn")[0].style.visibility =
+            "visible";
+          document.getElementsByClassName("username-warn")[0].style.color =
+            "var(--red)";
+        }
+      });
+  };
+
+  useEffect(() => {
     if (!passVal(password) && password.length > 0) {
       document.getElementById("password").style.border = "2px solid var(--red)";
       document.getElementsByClassName("pwd-match-warn")[0].style.visibility =
         "visible";
     } else {
       document.getElementById("password").style.border =
-        "2px solid var(--blue)";
+        "2px solid var(--green)";
       document.getElementsByClassName("pwd-match-warn")[0].style.visibility =
         "hidden";
     }
@@ -44,7 +87,7 @@ const Signup = ({ setStatus }) => {
         "2px solid var(--red)";
     } else {
       document.getElementById("confirm-password").style.border =
-        "2px solid var(--blue)";
+        "2px solid var(--green)";
     }
   }, [conPassword]);
 
@@ -76,7 +119,7 @@ const Signup = ({ setStatus }) => {
   };
 
   return (
-    <div>
+    <div id="main-body">
       <form
         className="main-form"
         onSubmit={(e) => {
@@ -92,22 +135,29 @@ const Signup = ({ setStatus }) => {
           id="email"
           type="email"
           placeholder="Enter your email"
-          name="username"
+          name="email"
           value={email}
           onChange={(e) => {
             setEmail(e.target.value);
           }}
         ></input>
-        <label htmlFor="username">Username</label>
+        <label htmlFor="username">
+          Username<p className="username-warn form-warn"></p>
+        </label>
         <input
           id="username"
           type="text"
+          name="username"
           placeholder="Enter your new username"
           value={username}
           onChange={(e) => {
             setUsername(e.target.value);
+            document.getElementsByClassName(
+              "username-warn"
+            )[0].style.visibility = "hidden";
           }}
         ></input>
+
         <label htmlFor="password">Password</label>
         <div className="pass-div">
           <input
@@ -116,6 +166,7 @@ const Signup = ({ setStatus }) => {
             name="password"
             placeholder="Enter new password"
             value={password}
+            autoComplete="false"
             onChange={(e) => {
               setPassword(e.target.value);
             }}
@@ -162,7 +213,7 @@ const Signup = ({ setStatus }) => {
           href="#signup"
           onClick={(e) => {
             e.preventDefault();
-            setStatus("login");
+            navigate("/login");
           }}
         >
           Log in

@@ -1,28 +1,20 @@
-import { useState } from 'react';
-import './App.css';
-import Login from './Login';
-import Signup from './Signup';
+import "./App.css";
+import Login from "./Login";
+import Signup from "./Signup";
+import Main from "./Main";
+import { Route, Routes, useNavigate } from "react-router-dom";
 
 function App() {
-  const [status, setStatus] = useState("login");
+  const navigate = useNavigate();
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1 id='main-logo'>Secrets</h1>
-        <nav>
-          
-        </nav>
-      </header>
-      <div id='main-body'>
-        {status==="login"?<Login 
-        setStatus={setStatus}
-        />
-        :
-        <Signup 
-        setStatus={setStatus}
-        />}
-
+      <div>
+        <Routes>
+          <Route path="/" element={<Main navigate={navigate} />} />
+          <Route path="/login" element={<Login navigate={navigate} />} />
+          <Route path="/signup" element={<Signup navigate={navigate} />} />
+        </Routes>
       </div>
     </div>
   );

@@ -45,10 +45,10 @@
     <a href="/login">login</a>
     <script>
       const ele = document.getElementById("high-head");
-      fetch("/user")
+      fetch("/data/user")
         .then((data) => data.json())
         .then((data) => {
-          ele.innerText = data.user.username;
+          ele.innerText = data.username;
         });
     </script>
   </body>
