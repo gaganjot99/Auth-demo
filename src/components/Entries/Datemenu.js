@@ -1,12 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Year from "./Year";
 
-const Datemenu = ({ setMonth, setYear, month, year }) => {
+const Datemenu = ({ setMonth, setYear, month, year, setMenu }) => {
   const [year1, setYear1] = useState(year);
   const handleMonth = (n) => {
     setMonth(n);
     setYear(year1);
+    setMenu(false);
   };
+  useEffect(() => {
+    document.getElementsByClassName("month-btn")[
+      month - 1
+    ].style.backgroundColor = "var(--lightgray)";
+  }, [month]);
   return (
     <div id="date-menu">
       <Year setYear={setYear1} year={year1} />

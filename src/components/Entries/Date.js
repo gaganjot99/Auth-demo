@@ -16,13 +16,8 @@ const months = [
   "December",
 ];
 
-const Date = (props) => {
+const Date = ({ setMonth, setYear, year, month }) => {
   const [menu, setMenu] = useState(false);
-  const [month, setMonth] = useState(1);
-  const [year, setYear] = useState(2022);
-  useEffect(() => {
-    setMenu(false);
-  }, [month]);
   return (
     <div id="date-div">
       <button className="noborder nrm-btn" onClick={(e) => setMenu(!menu)}>
@@ -39,6 +34,7 @@ const Date = (props) => {
           setMonth={setMonth}
           month={month}
           year={year}
+          setMenu={setMenu}
         />
       ) : null}
       <div id="date-arr">

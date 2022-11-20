@@ -15,7 +15,7 @@ const WritingSpace = (props) => {
     let eleWidth = document
       .getElementsByClassName("heading-input")[0]
       .getBoundingClientRect().width;
-    console.log(eleWidth, ele.getBoundingClientRect().width);
+    //console.log(eleWidth, ele.getBoundingClientRect().width);
     while (eleWidth > ele.getBoundingClientRect().width) {
       ele.setAttribute("cols", +ele.cols + 1);
     }

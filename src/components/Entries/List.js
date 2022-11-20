@@ -1,39 +1,41 @@
-import { useState } from "react";
 import Listitem from "./Listitem";
 
-const tempdata = [
-  {
-    heading: "Je suis fou",
-    content: "Prenez mon idee que tu es tres fou",
-    date: 20,
-    month: "Nov",
-    year: 2022,
-    day: "Tue",
-  },
-  {
-    heading: "Je suis grand",
-    content: "Prenez mon idee que tu tres petit",
-    date: 12,
-    month: "Jun",
-    year: 2022,
-    day: "Fri",
-  },
+const months = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
 ];
 
-const List = (props) => {
-  const [data, setData] = useState(tempdata);
+const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+const List = ({ data }) => {
   return (
     <div>
       {data.map((ele) => {
+        let time = new Date(ele.created_on);
+        let date = time.getDate();
+        let month = months[time.getMonth()];
+        let year = time.getFullYear();
+        let day = days[time.getDay()];
+        let key = time.getTime();
         return (
           <Listitem
             heading={ele.heading}
             content={ele.content}
-            date={ele.date}
-            month={ele.month}
-            year={ele.year}
-            day={ele.day}
-            key={ele.content}
+            date={date}
+            month={month}
+            year={year}
+            day={day}
+            key={key}
           />
         );
       })}
