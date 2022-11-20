@@ -9,7 +9,7 @@ const Righthalf = (props) => {
       //   style={{ left }}
     >
       <Entries />
-      <Workspace />
+      <Workspace showList={props.showList} />
     </div>
   );
 };

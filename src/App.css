@@ -336,3 +336,67 @@ button {
 .list-item-p {
   font-size: 0.9rem;
 }
+
+.head-right {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 20px;
+  max-height: 12vh;
+}
+
+.time-big {
+  opacity: 0.5;
+  font-weight: 600;
+  font-size: 1.75rem;
+}
+
+.user-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-right h1 {
+  font-size: 1.15rem;
+  color: var(--green);
+  margin-right: 40px;
+}
+
+.edit-options select {
+  border: 1px solid var(--lightgray);
+  color: var(--black);
+  font-size: 1rem;
+  padding: 5px 10px;
+  margin: 15px;
+}
+
+.writing-space {
+  padding: 15px;
+}
+
+.heading-input {
+  background-color: var(--white);
+  border: none;
+  width: 100%;
+  font-size: 1.5rem;
+  color: var(--black);
+}
+
+.heading-input:focus {
+  outline: none;
+}
+
+.content-input {
+  background-color: var(--white);
+  border: none;
+  resize: none;
+  font-size: 1rem;
+  color: var(--black);
+  margin-top: 10px;
+  margin-left: 3px;
+  height: auto;
+}
+
+.content-input:focus {
+  outline: none;
+}
