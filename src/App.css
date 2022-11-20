@@ -86,11 +86,16 @@ button {
   padding: 5px;
   cursor: pointer;
   transition-duration: 300ms;
+  color: var(--black);
 }
 
 .noborder {
   border: none;
   background-color: inherit;
+}
+
+.border-bottom {
+  border-bottom: 1px solid var(--lightgray);
 }
 
 .left-spc {
@@ -257,12 +262,9 @@ button {
 }
 
 #date-div {
-  position: absolute;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px;
-  width: 300px;
 }
 
 .nrm-btn {
@@ -276,4 +278,61 @@ button {
   font-size: 1rem;
   border-radius: 0;
   border: 1px solid var(--lightgray);
+}
+
+.add-btn {
+  border: 1px solid var(--lightgray);
+  margin: 15px 0;
+  align-self: flex-end;
+  font-size: 1rem;
+}
+
+.list-header {
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 10px 15px;
+  padding-bottom: 3px;
+}
+
+.list-item {
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.list-item:hover {
+  background-color: var(--lightgray);
+  transform: translate(3px, 5px);
+}
+
+.left-list-item {
+  flex-basis: 70%;
+  overflow: hidden;
+  margin-top: 5px;
+}
+
+.right-list-item {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0.75;
+  flex-basis: 26%;
+}
+
+.list-item-date {
+  padding: 0;
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.list-item-heading {
+  font-size: 1.25rem;
+  margin-top: 5px;
+}
+
+.list-item-p {
+  font-size: 0.9rem;
 }

@@ -45,7 +45,7 @@ const Date = (props) => {
         <button className="single-btn">
           <i className="bi bi-chevron-left"></i>
         </button>
-        <button className="single-btn" style={{ "margin-left": "-1px" }}>
+        <button className="single-btn" style={{ marginLeft: "-1px" }}>
           <i className="bi bi-chevron-right"></i>
         </button>
       </div>
