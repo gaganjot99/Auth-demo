@@ -3,6 +3,7 @@ import Year from "./Year";
 
 const Datemenu = ({ setMonth, setYear, month, year, setMenu }) => {
   const [year1, setYear1] = useState(year);
+  const [validM, setValidM] = useState(12);
   const handleMonth = (n) => {
     setMonth(n);
     setYear(year1);
@@ -13,46 +14,102 @@ const Datemenu = ({ setMonth, setYear, month, year, setMenu }) => {
       month - 1
     ].style.backgroundColor = "var(--lightgray)";
   }, [month]);
+
+  useEffect(() => {
+    if (new Date().getFullYear() === year1) {
+      let month = new Date().getMonth() + 1;
+      setValidM(month);
+    }
+  }, [year]);
+
   return (
     <div id="date-menu">
       <Year setYear={setYear1} year={year1} />
       <article id="month-art">
-        <div className="month-btn" onClick={(e) => handleMonth(1)}>
+        <button
+          disabled={1 > validM}
+          className="month-btn"
+          onClick={(e) => handleMonth(1)}
+        >
           Jan
-        </div>
-        <div className="month-btn" onClick={(e) => handleMonth(2)}>
+        </button>
+        <button
+          disabled={2 > validM}
+          className="month-btn"
+          onClick={(e) => handleMonth(2)}
+        >
           Feb
-        </div>
-        <div className="month-btn" onClick={(e) => handleMonth(3)}>
+        </button>
+        <button
+          disabled={3 > validM}
+          className="month-btn"
+          onClick={(e) => handleMonth(3)}
+        >
           Mar
-        </div>
-        <div className="month-btn" onClick={(e) => handleMonth(4)}>
+        </button>
+        <button
+          disabled={4 > validM}
+          className="month-btn"
+          onClick={(e) => handleMonth(4)}
+        >
           Apr
-        </div>
-        <div className="month-btn" onClick={(e) => handleMonth(5)}>
+        </button>
+        <button
+          disabled={5 > validM}
+          className="month-btn"
+          onClick={(e) => handleMonth(5)}
+        >
           May
-        </div>
-        <div className="month-btn" onClick={(e) => handleMonth(6)}>
+        </button>
+        <button
+          disabled={6 > validM}
+          className="month-btn"
+          onClick={(e) => handleMonth(6)}
+        >
           Jun
-        </div>
-        <div className="month-btn" onClick={(e) => handleMonth(7)}>
+        </button>
+        <button
+          disabled={7 > validM}
+          className="month-btn"
+          onClick={(e) => handleMonth(7)}
+        >
           Jul
-        </div>
-        <div className="month-btn" onClick={(e) => handleMonth(8)}>
+        </button>
+        <button
+          disabled={8 > validM}
+          className="month-btn"
+          onClick={(e) => handleMonth(8)}
+        >
           Aug
-        </div>
-        <div className="month-btn" onClick={(e) => handleMonth(9)}>
+        </button>
+        <button
+          disabled={9 > validM}
+          className="month-btn"
+          onClick={(e) => handleMonth(9)}
+        >
           Sep
-        </div>
-        <div className="month-btn" onClick={(e) => handleMonth(10)}>
+        </button>
+        <button
+          disabled={10 > validM}
+          className="month-btn"
+          onClick={(e) => handleMonth(10)}
+        >
           Oct
-        </div>
-        <div className="month-btn" onClick={(e) => handleMonth(11)}>
+        </button>
+        <button
+          disabled={11 > validM}
+          className="month-btn"
+          onClick={(e) => handleMonth(11)}
+        >
           Nov
-        </div>
-        <div className="month-btn" onClick={(e) => handleMonth(12)}>
+        </button>
+        <button
+          disabled={12 > validM}
+          className="month-btn"
+          onClick={(e) => handleMonth(12)}
+        >
           Dec
-        </div>
+        </button>
       </article>
     </div>
   );

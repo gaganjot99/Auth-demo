@@ -32,28 +32,26 @@ const WritingSpace = ({
     if (!updating) {
       return;
     }
-    if (selected.note_id) {
-      fetch("/data/updatenote", {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          note_id: selected.note_id,
-          heading,
-          content,
-        }),
-      })
-        .then((data) => data.json())
-        .then((data) => {
-          if (data.note_id) {
-            setSavedContent(data.content);
-            setSavedHeading(data.heading);
-            setUpdating(false);
-          }
-        });
-    }
-  }, [updating]);
+    fetch("/data/updatenote", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        note_id: selected.note_id,
+        heading,
+        content,
+      }),
+    })
+      .then((data) => data.json())
+      .then((data) => {
+        if (data.note_id) {
+          setSavedContent(data.content);
+          setSavedHeading(data.heading);
+          setUpdating(false);
+        }
+      });
+  }, [updating]); //eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     setHeading(selected.heading);
@@ -76,7 +74,7 @@ const WritingSpace = ({
           setSavedContent(data.content);
         }
       });
-  }, [selected]);
+  }, [selected]); //eslint-disable-line react-hooks/exhaustive-deps
 
   // To get the width of the text area equal to the width of the heading input element
 

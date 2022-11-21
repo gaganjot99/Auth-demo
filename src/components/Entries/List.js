@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Listitem from "./Listitem";
 
 const months = [
@@ -28,7 +28,7 @@ const List = ({ data, setSelected }) => {
         let month = months[time.getMonth()];
         let year = time.getFullYear();
         let day = days[time.getDay()];
-        let key = time.getTime();
+        let key = i;
         return (
           <div
             key={key}

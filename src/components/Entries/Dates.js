@@ -16,7 +16,7 @@ const months = [
   "December",
 ];
 
-const Date = ({ setMonth, setYear, year, month }) => {
+const Dates = ({ setMonth, setYear, year, month }) => {
   const [menu, setMenu] = useState(false);
   return (
     <div id="date-div">
@@ -49,4 +49,4 @@ const Date = ({ setMonth, setYear, year, month }) => {
   );
 };
 
-export default Date;
+export default Dates;
