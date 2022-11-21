@@ -400,3 +400,47 @@ button {
 .content-input:focus {
   outline: none;
 }
+
+.loader {
+  border-top: 5px solid blue;
+  border-right: 5px solid green;
+  border-bottom: 5px solid red;
+  border-left: 5px solid pink;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.margin-right {
+  margin-right: 5px;
+}
+
+.edit-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.save-btn {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  padding: 5px 10px 5px 5px;
+  border: 1px solid var(--lightgray);
+  margin: 15px;
+}
+
+.save-btn i {
+  font-size: 0.75rem;
+  filter: blur(1px);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

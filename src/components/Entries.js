@@ -4,7 +4,7 @@ import Listheader from "./Entries/Listheader";
 
 const dateNow = new Date();
 
-const Entries = (props) => {
+const Entries = ({ setSelected }) => {
   const [data, setData] = useState([]);
   const [month, setMonth] = useState(dateNow.getMonth() + 1);
   const [year, setYear] = useState(dateNow.getFullYear());
@@ -32,7 +32,7 @@ const Entries = (props) => {
         month={month}
         year={year}
       />
-      <List data={data} />
+      <List data={data} setSelected={setSelected} />
     </div>
   );
 };

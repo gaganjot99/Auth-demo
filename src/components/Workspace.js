@@ -1,21 +1,30 @@
+import { useState } from "react";
 import Headright from "./workspace/Headright";
 import Options from "./workspace/Options";
 import WritingSpace from "./workspace/Writingspace";
 
-const time = {
-  date: 23,
-  month: "Jun",
-  day: "Sat",
-  year: "2022",
-  time: "2:30 PM",
-};
+const Workspace = ({ selected, showList }) => {
+  const [change, setChange] = useState(false);
+  const [updating, setUpdating] = useState(false);
+  const [savedHeading, setSavedHeading] = useState(selected.heading);
+  const [savedContent, setSavedContent] = useState(selected.content);
 
-const Workspace = (props) => {
   return (
     <div id="main-workspace">
-      <Headright time={time} />
-      <Options />
-      <WritingSpace showList={props.showList} />
+      <Headright time={selected.created_on} />
+      <Options change={change} updating={updating} setUpdating={setUpdating} />
+      <WritingSpace
+        showList={showList}
+        selected={selected}
+        setChange={setChange}
+        updating={updating}
+        setUpdating={setUpdating}
+        change={change}
+        savedHeading={savedHeading}
+        savedContent={savedContent}
+        setSavedHeading={setSavedHeading}
+        setSavedContent={setSavedContent}
+      />
     </div>
   );
 };

@@ -1,11 +1,82 @@
 import { useEffect, useState } from "react";
 import useWindowDimensions from "./useWindowsDimension";
 
-const WritingSpace = (props) => {
-  const [heading, setHeading] = useState("");
-  const [content, setContent] = useState("");
+const WritingSpace = ({
+  selected,
+  showList,
+  change,
+  setChange,
+  savedContent,
+  savedHeading,
+  setSavedContent,
+  setSavedHeading,
+  updating,
+  setUpdating,
+}) => {
+  const [heading, setHeading] = useState(selected.heading);
+  const [content, setContent] = useState(selected.content);
   const [cols, setCols] = useState(20);
   const { height, width } = useWindowDimensions();
+
+  useEffect(() => {
+    if (heading !== savedHeading || content !== savedContent) {
+      if (!change) {
+        setChange(true);
+      }
+    } else {
+      setChange(false);
+    }
+  }, [heading, content, savedContent, savedHeading, change, setChange]);
+
+  useEffect(() => {
+    if (!updating) {
+      return;
+    }
+    if (selected.note_id) {
+      fetch("/data/updatenote", {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          note_id: selected.note_id,
+          heading,
+          content,
+        }),
+      })
+        .then((data) => data.json())
+        .then((data) => {
+          if (data.note_id) {
+            setSavedContent(data.content);
+            setSavedHeading(data.heading);
+            setUpdating(false);
+          }
+        });
+    }
+  }, [updating]);
+
+  useEffect(() => {
+    setHeading(selected.heading);
+    setContent(selected.content);
+    setSavedHeading(selected.heading);
+    setSavedContent(selected.content);
+    if (!selected.note_id) {
+      return;
+    }
+    fetch("/data/note/" + selected.note_id)
+      .then((data) => data.json())
+      .then((data) => {
+        if (
+          data.heading !== selected.heading ||
+          data.content !== selected.content
+        ) {
+          setHeading(data.heading);
+          setContent(data.content);
+          setSavedHeading(data.heading);
+          setSavedContent(data.content);
+        }
+      });
+  }, [selected]);
 
   // To get the width of the text area equal to the width of the heading input element
 
@@ -29,7 +100,7 @@ const WritingSpace = (props) => {
     return () => {
       clearTimeout(time);
     };
-  }, [width, height, props.showList]);
+  }, [width, height, showList]);
 
   const onEntering = () => {
     let temp = 0;
