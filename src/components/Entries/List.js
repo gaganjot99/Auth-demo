@@ -22,6 +22,9 @@ const List = ({ data, setSelected }) => {
   const [select, setSelect] = useState(0);
   return (
     <div>
+      {data.length === 0 ? (
+        <h2 className="h2-large-light">No Entries</h2>
+      ) : null}
       {data.map((ele, i) => {
         let time = new Date(ele.created_on);
         let date = time.getDate();

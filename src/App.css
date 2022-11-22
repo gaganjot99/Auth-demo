@@ -124,6 +124,10 @@ button:disabled {
   padding: 5px 15px;
 }
 
+.border-light {
+  border: 1px solid var(--lightgray);
+}
+
 .auth-btn:disabled {
   opacity: 0.75;
 }
@@ -136,6 +140,14 @@ button:disabled {
 .toggle-p {
   text-align: center;
   margin: 25px 0px;
+}
+
+.h2-large-light {
+  font-size: 2.5rem;
+  opacity: 0.25;
+  font-weight: bold;
+  margin: auto;
+  width: fit-content;
 }
 
 .pass-div {
@@ -291,6 +303,22 @@ button:disabled {
   font-size: 1rem;
 }
 
+.drop-menu {
+  position: absolute;
+  top: 40px;
+  right: -15px;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12),
+    0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  z-index: 20;
+  background: var(--white);
+  width: 100px;
+  padding: 10px;
+}
+
+.drop-menu button:hover {
+  background-color: var(--lightgray);
+}
+
 .list-header {
   display: flex;
   flex-flow: column nowrap;
@@ -359,6 +387,7 @@ button:disabled {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
 .user-right h1 {
@@ -439,6 +468,24 @@ button:disabled {
 .save-btn i {
   font-size: 0.75rem;
   filter: blur(1px);
+}
+
+.delete-btn {
+  margin: 15px;
+  font-size: 1rem;
+  border-color: var(--red);
+}
+
+.delete-btn:hover {
+  color: white;
+  background-color: var(--red);
+}
+
+.right-btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 30%;
 }
 
 @keyframes spin {

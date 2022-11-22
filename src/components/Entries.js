@@ -9,11 +9,12 @@ const body = {
   content: "",
 };
 
-const Entries = ({ setSelected }) => {
+const Entries = ({ setSelected, refresh, setRefresh }) => {
   const [data, setData] = useState([]);
   const [month, setMonth] = useState(dateNow.getMonth() + 1);
   const [year, setYear] = useState(dateNow.getFullYear());
   const shiftEntry = () => {
+    //console.log("shiftEntry");
     fetch("/data/addnotes", {
       method: "post",
       headers: {
@@ -49,9 +50,15 @@ const Entries = ({ setSelected }) => {
         if (data.length === 0) {
           return;
         }
-        setSelected(data[0]);
+
+        setSelected((d) => {
+          if (d.note_id) {
+            return d;
+          }
+          return data[0];
+        });
       });
-  }, [month, year]); //eslint-disable-line
+  }, [month, year, refresh]); //eslint-disable-line
   return (
     <div id="main-entries">
       <Listheader

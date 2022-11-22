@@ -3,7 +3,8 @@ import Dates from "./Dates";
 const Listheader = ({ setMonth, setYear, month, year, shiftEntry }) => {
   const addEnter = () => {
     let time = new Date();
-    if (time.getMonth() !== month || time.getFullYear() !== year) {
+    if (time.getMonth() + 1 !== month || time.getFullYear() !== year) {
+      //console.log("addEnter");
       setMonth(time.getMonth() + 1);
       setYear(time.getFullYear());
     } else {

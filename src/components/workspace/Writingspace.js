@@ -12,6 +12,7 @@ const WritingSpace = ({
   setSavedHeading,
   updating,
   setUpdating,
+  setRefresh,
 }) => {
   const [heading, setHeading] = useState(selected.heading);
   const [content, setContent] = useState(selected.content);
@@ -48,12 +49,16 @@ const WritingSpace = ({
         if (data.note_id) {
           setSavedContent(data.content);
           setSavedHeading(data.heading);
+          setRefresh((d) => d + 1);
           setUpdating(false);
         }
       });
   }, [updating]); //eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
+    if (change) {
+      setUpdating(true);
+    }
     setHeading(selected.heading);
     setContent(selected.content);
     setSavedHeading(selected.heading);

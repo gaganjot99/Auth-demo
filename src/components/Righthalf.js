@@ -1,6 +1,6 @@
 import Workspace from "./Workspace";
 import Entries from "./Entries";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const Righthalf = (props) => {
   const [selected, setSelected] = useState({
@@ -8,10 +8,15 @@ const Righthalf = (props) => {
     content: "",
     heading: "",
   });
+  const [refresh, setRefresh] = useState(0);
   return (
     <div id="right-half" className={props.showList ? "" : "left-move"}>
-      <Entries setSelected={setSelected} />
-      <Workspace selected={selected} showList={props.showList} />
+      <Entries setSelected={setSelected} refresh={refresh} />
+      <Workspace
+        selected={selected}
+        showList={props.showList}
+        setRefresh={setRefresh}
+      />
     </div>
   );
 };
