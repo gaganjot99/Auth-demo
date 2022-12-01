@@ -18,13 +18,11 @@ const months = [
 
 const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-const List = ({ data, setSelected }) => {
+const List = ({ data, setSelected, status }) => {
   const [select, setSelect] = useState(0);
   return (
     <div>
-      {data.length === 0 ? (
-        <h2 className="h2-large-light">No Entries</h2>
-      ) : null}
+      {data.length === 0 ? <h2 className="h2-large-light">{status}</h2> : null}
       {data.map((ele, i) => {
         let time = new Date(ele.created_on);
         let date = time.getDate();

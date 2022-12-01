@@ -1,6 +1,7 @@
 import Workspace from "./Workspace";
 import Entries from "./Entries";
 import { useState } from "react";
+import ErrorBoundary from "./Others/ErrorBoundary";
 
 const Righthalf = (props) => {
   const [selected, setSelected] = useState({
@@ -11,12 +12,16 @@ const Righthalf = (props) => {
   const [refresh, setRefresh] = useState(0);
   return (
     <div id="right-half" className={props.showList ? "" : "left-move"}>
-      <Entries setSelected={setSelected} refresh={refresh} />
-      <Workspace
-        selected={selected}
-        showList={props.showList}
-        setRefresh={setRefresh}
-      />
+      <ErrorBoundary>
+        <Entries setSelected={setSelected} refresh={refresh} />
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <Workspace
+          selected={selected}
+          showList={props.showList}
+          setRefresh={setRefresh}
+        />
+      </ErrorBoundary>
     </div>
   );
 };
