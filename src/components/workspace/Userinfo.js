@@ -1,8 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Dropdown from "../Others/Dropdown";
 
 const Userinfo = () => {
   const [username, setUsername] = useState("");
   const [show, setShow] = useState(false);
+  const ref = useRef(null);
+
+  const handleClick = (event) => {
+    setShow((i) => !i);
+  };
+
   useEffect(() => {
     fetch("/data/user")
       .then((data) => data.json())
@@ -14,21 +21,22 @@ const Userinfo = () => {
   return (
     <div className="user-right">
       <h1>{username}</h1>
-      <button className="noborder" onClick={(e) => setShow((i) => !i)}>
+      <button
+        className="noborder dot-btn"
+        onMouseDown={handleClick}
+        ref={ref}
+        style={show ? { backgroundColor: "var(--lightgray)" } : {}}
+      >
         <i className="bi bi-three-dots-vertical"></i>
       </button>
-      {show ? (
-        <div className="drop-menu">
-          <button
-            className="noborder"
-            onClick={(e) => {
-              window.location.href = "/logout";
-            }}
-          >
-            Log out
-          </button>
-        </div>
-      ) : null}
+      <Dropdown
+        show={show}
+        setShow={setShow}
+        options={[
+          { title: "Logout", fun: () => (window.location.href = "/logout") },
+        ]}
+        refBtn={ref}
+      />
     </div>
   );
 };

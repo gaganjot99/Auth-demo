@@ -165,6 +165,13 @@ button:disabled {
   position: relative;
 }
 
+.dot-btn {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 1rem;
+}
+
 .pass-eye {
   position: absolute;
   top: 7px;
@@ -323,7 +330,8 @@ button:disabled {
   z-index: 20;
   background: var(--white);
   width: 100px;
-  padding: 10px;
+  padding: 10px 0;
+  border-radius: 5px;
 }
 
 .drop-menu button:hover {
