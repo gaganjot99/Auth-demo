@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Loader from "../Others/Loader";
 import useWindowDimensions from "./useWindowsDimension";
 
 const WritingSpace = ({
@@ -13,6 +14,7 @@ const WritingSpace = ({
   updating,
   setUpdating,
   setRefresh,
+  font,
 }) => {
   const [heading, setHeading] = useState(selected.heading);
   const [content, setContent] = useState(selected.content);
@@ -103,7 +105,7 @@ const WritingSpace = ({
     return () => {
       clearTimeout(time);
     };
-  }, [width, height, showList]);
+  }, [width, height, showList, font]);
 
   const onEntering = () => {
     let temp = 0;
@@ -117,6 +119,10 @@ const WritingSpace = ({
   };
 
   useEffect(onEntering, [content, cols]);
+
+  if (selected === {}) {
+    return <Loader></Loader>;
+  }
 
   return (
     <div className="writing-space">
@@ -137,6 +143,7 @@ const WritingSpace = ({
           setContent(e.target.value);
           onEntering();
         }}
+        style={{ fontSize: font + "rem" }}
       ></textarea>
     </div>
   );

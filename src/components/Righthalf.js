@@ -20,6 +20,7 @@ const Righthalf = (props) => {
           selected={selected}
           showList={props.showList}
           setRefresh={setRefresh}
+          setSelected={setSelected}
         />
       </ErrorBoundary>
     </div>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Loader from "../Others/Loader";
 import Listitem from "./Listitem";
 
 const months = [
@@ -20,6 +21,11 @@ const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 const List = ({ data, setSelected, status }) => {
   const [select, setSelect] = useState(0);
+
+  if (status === "Loading") {
+    return <Loader></Loader>;
+  }
+
   return (
     <div>
       {data.length === 0 ? <h2 className="h2-large-light">{status}</h2> : null}

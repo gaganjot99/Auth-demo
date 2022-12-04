@@ -3,12 +3,13 @@ import Headright from "./workspace/Headright";
 import Options from "./workspace/Options";
 import WritingSpace from "./workspace/Writingspace";
 
-const Workspace = ({ selected, showList, setRefresh }) => {
+const Workspace = ({ selected, showList, setRefresh, setSelected }) => {
   const [change, setChange] = useState(false);
   const [updating, setUpdating] = useState(false);
   const [savedHeading, setSavedHeading] = useState(selected.heading);
   const [savedContent, setSavedContent] = useState(selected.content);
   const [deleting, setDeleting] = useState(false);
+  const [font, setFont] = useState(1);
 
   useEffect(() => {
     if (!deleting) {
@@ -20,6 +21,7 @@ const Workspace = ({ selected, showList, setRefresh }) => {
         if (data.status === "success") {
           setDeleting(false);
           setRefresh((d) => d + 1);
+          setSelected({ content: "", heading: "" });
         }
       })
       .catch((e) => console.log(e));
@@ -32,8 +34,8 @@ const Workspace = ({ selected, showList, setRefresh }) => {
         change={change}
         updating={updating}
         setUpdating={setUpdating}
-        setRefresh={setRefresh}
         setDeleting={setDeleting}
+        setFont={setFont}
       />
       <WritingSpace
         showList={showList}
@@ -47,6 +49,7 @@ const Workspace = ({ selected, showList, setRefresh }) => {
         setSavedHeading={setSavedHeading}
         setSavedContent={setSavedContent}
         setRefresh={setRefresh}
+        font={font}
       />
     </div>
   );

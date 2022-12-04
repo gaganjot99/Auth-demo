@@ -59,6 +59,8 @@ const Entries = ({ setSelected, refresh, setRefresh }) => {
           const newData = await data.json();
           if (newData.data.length === 0) {
             setStatus("No Entries");
+          } else {
+            setStatus("Loaded");
           }
           return newData;
         } catch (e) {
@@ -86,6 +88,7 @@ const Entries = ({ setSelected, refresh, setRefresh }) => {
         });
       });
   }, [month, year, refresh]); //eslint-disable-line
+
   return (
     <div id="main-entries">
       <ErrorBoundary>
