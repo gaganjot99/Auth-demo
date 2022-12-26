@@ -17,7 +17,7 @@ const Login = ({ navigate }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch("/login/password", {
+    fetch("/api/login/password", {
       method: "POST",
       mode: "same-origin",
       body: new URLSearchParams(new FormData(event.target)),
@@ -38,7 +38,7 @@ const Login = ({ navigate }) => {
     <div id="main-body">
       <form
         className="main-form"
-        action="/login/password"
+        action="/api/login/password"
         method="post"
         onSubmit={(event) => handleSubmit(event)}
       >

@@ -35,13 +35,17 @@ const WritingSpace = ({
     if (!updating) {
       return;
     }
-    fetch("/data/updatenote", {
+    let path = "/api/data/updatenote";
+    if (!selected.note_id) {
+      path = "/api/data/addnotes";
+    }
+    fetch(path, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        note_id: selected.note_id,
+        note_id: selected.note_id, //note_id will not be added if selected.note_id is undefined;
         heading,
         content,
       }),
@@ -51,8 +55,9 @@ const WritingSpace = ({
         if (data.note_id) {
           setSavedContent(data.content);
           setSavedHeading(data.heading);
-          setRefresh((d) => d + 1);
           setUpdating(false);
+          if (!selected.note_id || content.length < 20)
+            setRefresh((d) => d + 1);
         }
       });
   }, [updating]); //eslint-disable-line react-hooks/exhaustive-deps
@@ -68,7 +73,7 @@ const WritingSpace = ({
     if (!selected.note_id) {
       return;
     }
-    fetch("/data/note/" + selected.note_id)
+    fetch("/api/data/note/" + selected.note_id)
       .then((data) => data.json())
       .then((data) => {
         if (

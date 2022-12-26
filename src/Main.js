@@ -7,7 +7,7 @@ const Main = ({ navigate }) => {
   const [user, setUser] = useState("");
   const [showList, setShowList] = useState(true);
   useEffect(() => {
-    fetch("/data/user")
+    fetch("/api/data/user")
       .then((data) => {
         if (data.redirected) {
           navigate("/login");

@@ -15,7 +15,7 @@ const Workspace = ({ selected, showList, setRefresh, setSelected }) => {
     if (!deleting) {
       return;
     }
-    fetch("/data/deletenote/" + selected.note_id, { method: "delete" })
+    fetch("/api/data/deletenote/" + selected.note_id, { method: "delete" })
       .then((data) => data.json())
       .then((data) => {
         if (data.status === "success") {

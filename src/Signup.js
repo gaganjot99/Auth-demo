@@ -47,7 +47,7 @@ const Signup = ({ navigate }) => {
         "var(--red)";
       return;
     }
-    fetch("/verifyname/" + username)
+    fetch("/api/verifyname/" + username)
       .then((data) => data.json())
       .then((data) => {
         if (!data.username) {
@@ -127,7 +127,7 @@ const Signup = ({ navigate }) => {
           e.target.submit();
         }}
         method="post"
-        action="/signup"
+        action="/api/signup"
       >
         <h2>Sign up</h2>
         <label htmlFor="email">E-mail</label>

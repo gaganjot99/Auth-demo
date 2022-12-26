@@ -5,24 +5,19 @@ import ErrorBoundary from "./Others/ErrorBoundary";
 
 const dateNow = new Date();
 
-const body = {
-  heading: "",
-  content: "",
-};
-
 const Entries = ({ setSelected, refresh, setRefresh }) => {
   const [data, setData] = useState([]);
   const [status, setStatus] = useState("Loading");
   const [month, setMonth] = useState(dateNow.getMonth() + 1);
   const [year, setYear] = useState(dateNow.getFullYear());
-  const shiftEntry = () => {
+  const shiftEntry = (data) => {
     //console.log("shiftEntry");
-    fetch("/data/addnotes", {
+    fetch("/api/data/addnotes", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(body),
+      body: JSON.stringify(data),
     })
       .then(async (data) => {
         try {
@@ -44,7 +39,7 @@ const Entries = ({ setSelected, refresh, setRefresh }) => {
 
   useEffect(() => {
     setStatus("Loading");
-    fetch("/data/notes/dated", {
+    fetch("/api/data/notes/dated", {
       method: "post",
       headers: {
         "Content-Type": "application/json",

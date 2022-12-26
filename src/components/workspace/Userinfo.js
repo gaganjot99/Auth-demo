@@ -11,7 +11,7 @@ const Userinfo = () => {
   };
 
   useEffect(() => {
-    fetch("/data/user")
+    fetch("/api/data/user")
       .then((data) => data.json())
       .then((data) => {
         setUsername(data.username);
@@ -33,7 +33,10 @@ const Userinfo = () => {
         show={show}
         setShow={setShow}
         options={[
-          { title: "Logout", fun: () => (window.location.href = "/logout") },
+          {
+            title: "Logout",
+            fun: () => (window.location.href = "/api/logout"),
+          },
         ]}
         refBtn={ref}
       />

@@ -1,5 +1,10 @@
 import Dates from "./Dates";
 
+const body = {
+  heading: "",
+  content: "",
+};
+
 const Listheader = ({ setMonth, setYear, month, year, shiftEntry }) => {
   const addEnter = () => {
     let time = new Date();
@@ -8,7 +13,7 @@ const Listheader = ({ setMonth, setYear, month, year, shiftEntry }) => {
       setMonth(time.getMonth() + 1);
       setYear(time.getFullYear());
     } else {
-      shiftEntry();
+      shiftEntry(body);
     }
   };
   return (
