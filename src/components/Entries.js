@@ -51,12 +51,8 @@ const Entries = ({ setSelected, refresh, setRefresh }) => {
     })
       .then((data) => data.json())
       .then((data) => {
-        if (!data || !data.length) {
-          setStatus("No Entries");
-          return [];
-        }
         //const newData = await data.json();
-        if (data.length === 0) {
+        if (data.data.length === 0) {
           setStatus("No Entries");
         } else {
           setStatus("Loaded");
@@ -64,7 +60,6 @@ const Entries = ({ setSelected, refresh, setRefresh }) => {
         return data;
       })
       .then((data) => {
-        console.log(data);
         const newData = data.data;
         if (!data) {
           return;
