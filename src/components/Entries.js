@@ -51,19 +51,17 @@ const Entries = ({ setSelected, refresh, setRefresh }) => {
     })
       .then((data) => data.json())
       .then((data) => {
-        try {
-          //const newData = await data.json();
-          if (data.length === 0) {
-            setStatus("No Entries");
-          } else {
-            setStatus("Loaded");
-          }
-          return data;
-        } catch (e) {
-          setStatus("Some Error occured");
-          //console.log(e);
-          return { data: [] };
+        if (!data) {
+          setStatus("No Entries");
+          return [];
         }
+        //const newData = await data.json();
+        if (data.length === 0) {
+          setStatus("No Entries");
+        } else {
+          setStatus("Loaded");
+        }
+        return data;
       })
       .then((data) => {
         console.log(data);
