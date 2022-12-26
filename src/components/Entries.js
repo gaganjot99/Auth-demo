@@ -49,15 +49,16 @@ const Entries = ({ setSelected, refresh, setRefresh }) => {
         upto: year + "-" + month + "-31 23:59:59",
       }),
     })
-      .then(async (data) => {
+      .then((data) => data.json())
+      .then((data) => {
         try {
-          const newData = await data.json();
-          if (newData.data.length === 0) {
+          //const newData = await data.json();
+          if (data.length === 0) {
             setStatus("No Entries");
           } else {
             setStatus("Loaded");
           }
-          return newData;
+          return data;
         } catch (e) {
           setStatus("Some Error occured");
           //console.log(e);
