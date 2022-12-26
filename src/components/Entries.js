@@ -51,7 +51,7 @@ const Entries = ({ setSelected, refresh, setRefresh }) => {
     })
       .then((data) => data.json())
       .then((data) => {
-        if (!data) {
+        if (!data || !data.length) {
           setStatus("No Entries");
           return [];
         }
